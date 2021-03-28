@@ -219,9 +219,22 @@ class MainPanel extends BaseWidget {
 
   openSort() {
     this.setMode('sort');
-    this.openPicker('Sort by', FIELDS, (err, sort) => {
+    this.openPicker('Sort by', FIELDS.concat('other'), (err, sort) => {
       if (!sort) { return this.resetMode(); }
       if (err) { return; }
+      if (sort === 'other') {
+        return this.openCustomSort();
+      }
+      if (this.sortKey === sort && this.sortAsc) {
+        return this.setSort(`-${sort}`);
+      }
+      this.setSort(sort);
+    });
+  }
+
+  openCustomSort() {
+    this.prompt(`Field to sort:`, '', (sort) => {
+      if (!sort) { return this.resetMode(); }
       if (this.sortKey === sort && this.sortAsc) {
         return this.setSort(`-${sort}`);
       }
