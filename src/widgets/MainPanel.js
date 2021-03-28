@@ -478,9 +478,6 @@ class MainPanel extends BaseWidget {
 
   pageUp() {
     const relativeRow = this.relativeRow;
-    if (this.row - this.pageHeight < 0) {
-      return;
-    }
     this.row = Math.max(0, this.row - this.pageHeight);
     this.initialRow = Math.max(0, this.row - relativeRow);
     this.renderLines();
