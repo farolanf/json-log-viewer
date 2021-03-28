@@ -26,10 +26,9 @@ screen.key(['C-c'], function(_ch, _key) {
 
 const level = opts.l || opts.level;
 const sort = opts.s || opts.sort;
-const args = { screen, level, sort };
+const args = { screen, level, sort, logFile };
 
 const mainPanel = new MainPanel(args);
-mainPanel.loadFile(logFile);
 
 const statusLine = new StatusLine({ screen, mainPanel });
 screen.append(statusLine);

@@ -33,6 +33,7 @@ class MainPanel extends BaseWidget {
       this.fixCursor();
       this.renderLines();
     });
+    this.loadFile(opts.logFile);
     this.renderLines();
   }
 
@@ -43,6 +44,7 @@ class MainPanel extends BaseWidget {
     this.file = file;
     this.rawLines = readLog(file);
     this.log('loaded', this.lines.length);
+    this.setUpdated();
     this.renderLines();
   }
 
@@ -136,6 +138,10 @@ class MainPanel extends BaseWidget {
     }
     if (key.name === 'enter') {
       this.displayDetails();
+      return;
+    }
+    if (ch === 'r') {
+      this.loadFile(this.file);
       return;
     }
     if (ch === '0') {
