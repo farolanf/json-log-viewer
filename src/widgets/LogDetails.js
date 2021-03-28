@@ -61,7 +61,7 @@ class LogDetails extends BaseWidget {
     }
     if (key.name == 'pageup' || key.name == 'left') {
       const f = ((key.shift ? 1 : 0) + (key.ctrl ? 4 : 0)) * 5 + 1;
-      const height = this.height * f + (f * 3);
+      const height = this.height * f - (f * 3);
       this.el.scroll(-height);
       this.screen.render();
     } 
