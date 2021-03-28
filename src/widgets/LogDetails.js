@@ -51,6 +51,26 @@ class LogDetails extends BaseWidget {
       this.json = !this.json;
       this.update();
     }
+    if (key.name == 'home') {
+      this.el.scroll(-this.el.getScrollHeight());
+      this.screen.render();
+    } 
+    if (key.name == 'end') {
+      this.el.scroll(this.el.getScrollHeight());
+      this.screen.render();
+    }
+    if (key.name == 'pageup') {
+      const f = (key.shift ? 5 : 1);
+      const height = this.height * f + (f * 3);
+      this.el.scroll(-height);
+      this.screen.render();
+    } 
+    if (key.name == 'pagedown') {
+      const f = (key.shift ? 5 : 1);
+      const height = this.height * f - (f * 3);
+      this.el.scroll(height);
+      this.screen.render();
+    }
   };
 
   display(entry) {
