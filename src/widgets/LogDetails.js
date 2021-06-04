@@ -40,7 +40,7 @@ class LogDetails extends BaseWidget {
   }
 
   handleKeyPress(ch, key) {
-    if (key.name === 'enter' || key.name === 'escape' || key.name == 'q') {
+    if (key.name === 'enter' || key.name === 'escape' || key.name === 'q') {
       this.log('detach');
       this.el.detach();
       this.detach();
@@ -51,21 +51,21 @@ class LogDetails extends BaseWidget {
       this.json = !this.json;
       this.update();
     }
-    if (key.name == 'home') {
+    if (key.name === 'home') {
       this.el.scroll(-this.el.getScrollHeight());
       this.screen.render();
     } 
-    if (key.name == 'end') {
+    if (key.name === 'end') {
       this.el.scroll(this.el.getScrollHeight());
       this.screen.render();
     }
-    if (key.name == 'pageup' || key.name == 'left') {
+    if (key.name === 'pageup' || key.name === 'left') {
       const f = ((key.shift ? 1 : 0) + (key.ctrl ? 4 : 0)) * 5 + 1;
       const height = this.height * f - (f * 3);
       this.el.scroll(-height);
       this.screen.render();
     } 
-    if (key.name == 'pagedown' || key.name == 'right') {
+    if (key.name === 'pagedown' || key.name === 'right') {
       const f = ((key.shift ? 1 : 0) + (key.ctrl ? 4 : 0)) * 5 + 1;
       const height = this.height * f - (f * 3);
       this.el.scroll(height);
